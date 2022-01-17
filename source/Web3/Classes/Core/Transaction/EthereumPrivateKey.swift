@@ -212,7 +212,7 @@ public final class EthereumPrivateKey {
 
     // MARK: - Convenient functions
 
-    public func sign(message: Bytes,needToHash: Bool = false) throws -> (v: UInt, r: Bytes, s: Bytes) {
+    public func sign(message: Bytes,needToHash: Bool = true) throws -> (v: UInt, r: Bytes, s: Bytes) {
         var hash: Bytes = message
         if needToHash { hash = SHA3(variant: .keccak256).calculate(for: message) }
         guard hash.count == 32 else {
